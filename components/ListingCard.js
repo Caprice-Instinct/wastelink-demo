@@ -28,18 +28,19 @@ export default function ListingCard({ listing, onViewClick }) {
         >
           <Camera className="w-12 h-12 text-gray-400" />
         </div>
-        <div className="absolute top-3 left-3 bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
+        <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
           Grade {listing.quality?.grade || "B"}
         </div>
         {listing.aiAnalysis?.confidence && (
-          <div className="absolute top-3 right-3 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-xs">
-            {Math.round(listing.aiAnalysis.confidence * 100)}% AI Match
+          <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-xs">
+            <span className="hidden sm:inline">{Math.round(listing.aiAnalysis.confidence * 100)}% AI Match</span>
+            <span className="sm:hidden">{Math.round(listing.aiAnalysis.confidence * 100)}% AI</span>
           </div>
         )}
       </div>
 
-      <div className="p-4">
-        <h3 className="font-bold text-gray-900 mb-2">
+      <div className="p-3 sm:p-4">
+        <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 line-clamp-2">
           {listing.title}
         </h3>
 
@@ -60,21 +61,21 @@ export default function ListingCard({ listing, onViewClick }) {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <div className="text-2xl font-bold text-green-600">
+        <div className="flex items-center justify-between mb-3 sm:mb-4">
+          <div className="min-w-0 flex-1">
+            <div className="text-xl sm:text-2xl font-bold text-green-600 truncate">
               KSh{listing.pricing?.askingPrice?.toLocaleString() || "0"}
             </div>
             {listing.aiAnalysis?.estimatedValue && (
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-500 truncate">
                 AI Est: ${listing.aiAnalysis.estimatedValue.min}-$
                 {listing.aiAnalysis.estimatedValue.max}
               </div>
             )}
           </div>
-          <div className="text-right">
+          <div className="text-right ml-2 flex-shrink-0">
             <div
-              className={`text-sm font-medium ${
+              className={`text-xs sm:text-sm font-medium ${
                 listing.aiAnalysis?.marketDemand === "High"
                   ? "text-green-600"
                   : listing.aiAnalysis?.marketDemand === "Medium"
@@ -82,7 +83,8 @@ export default function ListingCard({ listing, onViewClick }) {
                   : "text-red-600"
               }`}
             >
-              {listing.aiAnalysis?.marketDemand || "Medium"} Demand
+              <span className="hidden sm:inline">{listing.aiAnalysis?.marketDemand || "Medium"} Demand</span>
+              <span className="sm:hidden">{listing.aiAnalysis?.marketDemand || "Med"}</span>
             </div>
           </div>
         </div>

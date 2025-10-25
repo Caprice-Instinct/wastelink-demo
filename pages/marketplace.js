@@ -444,23 +444,23 @@ export default function Marketplace() {
           />
         </div>
 
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-4 rounded-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-3 sm:p-4 rounded-xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold">2,847</div>
-              <div className="text-sm opacity-90">Active Listings</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold">2,847</div>
+              <div className="text-xs sm:text-sm opacity-90">Active Listings</div>
             </div>
             <div>
-              <div className="text-2xl font-bold">$4.2M</div>
-              <div className="text-sm opacity-90">Daily Volume</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold">$4.2M</div>
+              <div className="text-xs sm:text-sm opacity-90">Daily Volume</div>
             </div>
             <div>
-              <div className="text-2xl font-bold">156</div>
-              <div className="text-sm opacity-90">Transactions Today</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold">156</div>
+              <div className="text-xs sm:text-sm opacity-90">Transactions Today</div>
             </div>
             <div>
-              <div className="text-2xl font-bold">23%↑</div>
-              <div className="text-sm opacity-90">HDPE Demand</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold">23%↑</div>
+              <div className="text-xs sm:text-sm opacity-90">HDPE Demand</div>
             </div>
           </div>
         </div>
@@ -496,29 +496,30 @@ export default function Marketplace() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header with Gradient */}
-            <div className="sticky top-0 bg-gradient-to-r from-green-600 to-blue-600 px-8 py-5 flex items-center justify-between z-10 shadow-lg">
-              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                <Package className="w-7 h-7" />
-                Product Details
+            <div className="sticky top-0 bg-gradient-to-r from-green-600 to-blue-600 px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between z-10 shadow-lg">
+              <h2 className="text-lg sm:text-2xl font-bold text-white flex items-center gap-2">
+                <Package className="w-5 h-5 sm:w-7 sm:h-7" />
+                <span className="hidden sm:inline">Product Details</span>
+                <span className="sm:hidden">Details</span>
               </h2>
               <button
                 onClick={handleCloseModal}
-                className="p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-all text-white"
+                className="p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-all text-white flex-shrink-0"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
 
             {/* Modal Content */}
             <div className="overflow-y-auto max-h-[calc(95vh-80px)]">
-              <div className="p-8 space-y-8">
+              <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 md:space-y-8">
                 {/* Product Image with Enhanced Styling */}
                 <div className="relative group">
                   {selectedProduct.images && selectedProduct.images.length > 0 ? (
                     <img
                       src={selectedProduct.images[0]}
                       alt={selectedProduct.title}
-                      className="w-full h-96 object-cover rounded-2xl shadow-lg group-hover:shadow-2xl transition-shadow"
+                      className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-2xl shadow-lg group-hover:shadow-2xl transition-shadow"
                       onError={(e) => {
                         e.target.style.display = "none";
                         e.target.nextSibling.style.display = "flex";
@@ -526,37 +527,37 @@ export default function Marketplace() {
                     />
                   ) : null}
                   <div
-                    className="w-full h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center rounded-2xl shadow-lg"
+                    className="w-full h-48 sm:h-64 md:h-80 lg:h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center rounded-2xl shadow-lg"
                     style={{
                       display: selectedProduct.images && selectedProduct.images.length > 0 ? "none" : "flex",
                     }}
                   >
-                    <Camera className="w-20 h-20 text-gray-400" />
+                    <Camera className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-gray-400" />
                   </div>
-                  <div className="absolute top-5 left-5 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">
+                  <div className="absolute top-2 sm:top-3 md:top-5 left-2 sm:left-3 md:left-5 bg-gradient-to-r from-green-500 to-green-600 text-white px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold shadow-lg">
                     Grade {selectedProduct.quality?.grade || "B"}
                   </div>
                   {selectedProduct.aiAnalysis?.confidence && (
-                    <div className="absolute top-5 right-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">
-                      {Math.round(selectedProduct.aiAnalysis.confidence * 100)}% AI Match
+                    <div className="absolute top-2 sm:top-3 md:top-5 right-2 sm:right-3 md:right-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold shadow-lg">
+                      {Math.round(selectedProduct.aiAnalysis.confidence * 100)}% AI
                     </div>
                   )}
                 </div>
 
                 {/* Product Title & Price with Card */}
-                <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border-2 border-gray-100 shadow-sm">
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4">{selectedProduct.title}</h3>
-                  <div className="flex items-end justify-between">
+                <div className="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 rounded-2xl border-2 border-gray-100 shadow-sm">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">{selectedProduct.title}</h3>
+                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
                     <div>
-                      <div className="text-sm text-gray-500 mb-1 font-medium">Asking Price</div>
-                      <div className="text-5xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
+                      <div className="text-xs sm:text-sm text-gray-500 mb-1 font-medium">Asking Price</div>
+                      <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
                         KSh{selectedProduct.pricing?.askingPrice?.toLocaleString() || "0"}
                       </div>
                     </div>
                     {selectedProduct.aiAnalysis?.estimatedValue && (
-                      <div className="text-right bg-blue-50 px-4 py-2 rounded-lg">
+                      <div className="sm:text-right bg-blue-50 px-3 sm:px-4 py-2 rounded-lg">
                         <div className="text-xs text-blue-600 font-semibold mb-1">AI Estimated Value</div>
-                        <div className="text-lg font-bold text-blue-700">
+                        <div className="text-base sm:text-lg font-bold text-blue-700">
                           ${selectedProduct.aiAnalysis.estimatedValue.min}-${selectedProduct.aiAnalysis.estimatedValue.max}
                         </div>
                       </div>
@@ -570,44 +571,44 @@ export default function Marketplace() {
                 </div>
 
               {/* Product Details Grid */}
-              <div className="grid md:grid-cols-2 gap-5">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-shadow">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 sm:p-5 md:p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-shadow">
                   <div className="flex items-center text-blue-700 mb-2">
-                    <div className="p-2 bg-blue-200 rounded-lg mr-3">
-                      <Package className="w-5 h-5" />
+                    <div className="p-1.5 sm:p-2 bg-blue-200 rounded-lg mr-2 sm:mr-3">
+                      <Package className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <span className="text-sm font-semibold uppercase tracking-wide">Quantity</span>
+                    <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">Quantity</span>
                   </div>
-                  <div className="text-3xl font-bold text-blue-900">
+                  <div className="text-2xl sm:text-3xl font-bold text-blue-900">
                     {selectedProduct.quantity.amount} {selectedProduct.quantity.unit}
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200 hover:shadow-lg transition-shadow">
+                <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 sm:p-5 md:p-6 rounded-xl border border-purple-200 hover:shadow-lg transition-shadow">
                   <div className="flex items-center text-purple-700 mb-2">
-                    <div className="p-2 bg-purple-200 rounded-lg mr-3">
-                      <MapPin className="w-5 h-5" />
+                    <div className="p-1.5 sm:p-2 bg-purple-200 rounded-lg mr-2 sm:mr-3">
+                      <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <span className="text-sm font-semibold uppercase tracking-wide">Location</span>
+                    <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">Location</span>
                   </div>
-                  <div className="text-2xl font-bold text-purple-900">
+                  <div className="text-lg sm:text-xl md:text-2xl font-bold text-purple-900">
                     {selectedProduct.location?.city}, {selectedProduct.location?.country}
                   </div>
                 </div>
 
-                <div className={`p-6 rounded-xl border-2 hover:shadow-lg transition-shadow ${
+                <div className={`p-4 sm:p-5 md:p-6 rounded-xl border-2 hover:shadow-lg transition-shadow ${
                   selectedProduct.aiAnalysis?.marketDemand === "High"
                     ? "bg-gradient-to-br from-green-50 to-green-100 border-green-200"
                     : selectedProduct.aiAnalysis?.marketDemand === "Medium"
                     ? "bg-gradient-to-br from-yellow-50 to-yellow-100 border-yellow-200"
                     : "bg-gradient-to-br from-red-50 to-red-100 border-red-200"
                 }`}>
-                  <div className={`text-sm font-semibold uppercase tracking-wide mb-2 ${
+                  <div className={`text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2 ${
                     selectedProduct.aiAnalysis?.marketDemand === "High" ? "text-green-700" :
                     selectedProduct.aiAnalysis?.marketDemand === "Medium" ? "text-yellow-700" :
                     "text-red-700"
                   }`}>Market Demand</div>
-                  <div className={`text-3xl font-bold ${
+                  <div className={`text-2xl sm:text-3xl font-bold ${
                     selectedProduct.aiAnalysis?.marketDemand === "High" ? "text-green-900" :
                     selectedProduct.aiAnalysis?.marketDemand === "Medium" ? "text-yellow-900" :
                     "text-red-900"
@@ -616,9 +617,9 @@ export default function Marketplace() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl border border-orange-200 hover:shadow-lg transition-shadow">
-                  <div className="text-sm font-semibold uppercase tracking-wide text-orange-700 mb-2">Contamination Level</div>
-                  <div className="text-3xl font-bold text-orange-900">
+                <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-4 sm:p-5 md:p-6 rounded-xl border border-orange-200 hover:shadow-lg transition-shadow">
+                  <div className="text-xs sm:text-sm font-semibold uppercase tracking-wide text-orange-700 mb-2">Contamination Level</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-orange-900">
                     {selectedProduct.quality?.contamination || 0}%
                   </div>
                   <div className="mt-2 w-full bg-orange-200 rounded-full h-2">
@@ -631,26 +632,26 @@ export default function Marketplace() {
               </div>
 
               {/* Seller Information */}
-              <div className="bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 p-8 rounded-2xl border-2 border-indigo-200 shadow-md">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg">
-                    <Users className="w-6 h-6 text-white" />
+              <div className="bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 p-4 sm:p-6 md:p-8 rounded-2xl border-2 border-indigo-200 shadow-md">
+                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                  <div className="p-2 sm:p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg">
+                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                  <h4 className="text-2xl font-bold text-gray-900">Seller Information</h4>
+                  <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Seller Information</h4>
                 </div>
 
-                <div className="bg-white p-6 rounded-xl shadow-sm space-y-4">
+                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-sm space-y-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-3">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-md flex-shrink-0">
                           {selectedProduct.seller.name.charAt(0)}
                         </div>
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xl font-bold text-gray-900">{selectedProduct.seller.name}</span>
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-base sm:text-lg md:text-xl font-bold text-gray-900 truncate">{selectedProduct.seller.name}</span>
                             {selectedProduct.seller.verified && (
-                              <span className="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs px-3 py-1 rounded-full font-semibold shadow-sm flex items-center gap-1">
+                              <span className="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-semibold shadow-sm flex items-center gap-1 flex-shrink-0">
                                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                                 </svg>
@@ -658,32 +659,32 @@ export default function Marketplace() {
                               </span>
                             )}
                           </div>
-                          <div className="flex items-center gap-2 mt-2">
+                          <div className="flex items-center gap-1 sm:gap-2 mt-2">
                             {[...Array(5)].map((_, i) => (
                               <Star
                                 key={i}
-                                className={`w-5 h-5 ${
+                                className={`w-4 h-4 sm:w-5 sm:h-5 ${
                                   i < Math.floor(selectedProduct.seller.rating)
                                     ? "fill-yellow-400 text-yellow-400"
                                     : "fill-gray-200 text-gray-200"
                                 }`}
                               />
                             ))}
-                            <span className="text-sm font-bold text-gray-700 ml-1">
+                            <span className="text-xs sm:text-sm font-bold text-gray-700 ml-1">
                               {selectedProduct.seller.rating}
                             </span>
                           </div>
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 mt-4">
-                        <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg border border-green-200">
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4">
+                        <div className="bg-gradient-to-br from-green-50 to-green-100 p-3 sm:p-4 rounded-lg border border-green-200">
                           <div className="text-xs text-green-700 font-semibold uppercase mb-1">Total Sales</div>
-                          <div className="text-2xl font-bold text-green-900">{selectedProduct.seller.totalSales}</div>
+                          <div className="text-xl sm:text-2xl font-bold text-green-900">{selectedProduct.seller.totalSales}</div>
                         </div>
-                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-3 sm:p-4 rounded-lg border border-blue-200">
                           <div className="text-xs text-blue-700 font-semibold uppercase mb-1">Response Time</div>
-                          <div className="text-lg font-bold text-blue-900">{selectedProduct.seller.responseTime}</div>
+                          <div className="text-base sm:text-lg font-bold text-blue-900">{selectedProduct.seller.responseTime}</div>
                         </div>
                       </div>
                     </div>
@@ -692,62 +693,62 @@ export default function Marketplace() {
               </div>
 
               {/* Action Buttons */}
-              <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-6 rounded-2xl space-y-4">
-                <h4 className="text-lg font-bold text-gray-900 mb-4">Quick Actions</h4>
+              <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-4 sm:p-6 rounded-2xl space-y-4">
+                <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Quick Actions</h4>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                   <button
                     onClick={() => handleToggleWishlist(selectedProduct._id)}
-                    className={`group py-4 px-6 rounded-xl font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-3 shadow-md ${
+                    className={`group py-3 sm:py-4 px-4 sm:px-6 rounded-xl font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 sm:gap-3 shadow-md ${
                       wishlist.includes(selectedProduct._id)
                         ? "bg-gradient-to-br from-red-500 to-pink-600 text-white border-2 border-red-600"
                         : "bg-white border-2 border-gray-300 text-gray-700 hover:border-red-500"
                     }`}
                   >
                     <Heart
-                      className={`w-8 h-8 transition-all ${
+                      className={`w-6 h-6 sm:w-8 sm:h-8 transition-all ${
                         wishlist.includes(selectedProduct._id)
                           ? "fill-white"
                           : "group-hover:fill-red-500 group-hover:text-red-500"
                       }`}
                     />
-                    <span className="text-sm">
+                    <span className="text-xs sm:text-sm">
                       {wishlist.includes(selectedProduct._id) ? "In Wishlist" : "Add to Wishlist"}
                     </span>
                   </button>
 
                   <button
                     onClick={() => handleAddToCart(selectedProduct)}
-                    className="group bg-gradient-to-br from-blue-500 to-blue-700 text-white py-4 px-6 rounded-xl font-bold hover:from-blue-600 hover:to-blue-800 transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-3 shadow-lg border-2 border-blue-600"
+                    className="group bg-gradient-to-br from-blue-500 to-blue-700 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-xl font-bold hover:from-blue-600 hover:to-blue-800 transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 sm:gap-3 shadow-lg border-2 border-blue-600"
                   >
-                    <CartIcon className="w-8 h-8 group-hover:scale-110 transition-transform" />
-                    <span className="text-sm">Add to Cart</span>
+                    <CartIcon className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform" />
+                    <span className="text-xs sm:text-sm">Add to Cart</span>
                   </button>
 
                   <button
                     disabled={isGuest}
-                    className={`group py-4 px-6 rounded-xl font-bold transition-all transform flex flex-col items-center justify-center gap-3 shadow-lg border-2 ${
+                    className={`group py-3 sm:py-4 px-4 sm:px-6 rounded-xl font-bold transition-all transform flex flex-col items-center justify-center gap-2 sm:gap-3 shadow-lg border-2 ${
                       isGuest
                         ? "bg-gray-200 text-gray-400 cursor-not-allowed border-gray-300"
                         : "bg-gradient-to-br from-green-500 to-green-700 text-white hover:from-green-600 hover:to-green-800 hover:scale-105 border-green-600"
                     }`}
                     title={isGuest ? "Sign in to purchase" : ""}
                   >
-                    <CreditCard className={`w-8 h-8 ${!isGuest && "group-hover:scale-110 transition-transform"}`} />
-                    <span className="text-sm">Purchase Now</span>
+                    <CreditCard className={`w-6 h-6 sm:w-8 sm:h-8 ${!isGuest && "group-hover:scale-110 transition-transform"}`} />
+                    <span className="text-xs sm:text-sm">Purchase Now</span>
                   </button>
                 </div>
               </div>
 
               {isGuest && (
-                <div className="bg-gradient-to-r from-orange-100 to-orange-50 border-2 border-orange-300 text-orange-900 p-5 rounded-xl shadow-sm">
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 bg-orange-200 rounded-lg">
-                      <Info className="w-5 h-5 text-orange-700" />
+                <div className="bg-gradient-to-r from-orange-100 to-orange-50 border-2 border-orange-300 text-orange-900 p-4 sm:p-5 rounded-xl shadow-sm">
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="p-1.5 sm:p-2 bg-orange-200 rounded-lg flex-shrink-0">
+                      <Info className="w-4 h-4 sm:w-5 sm:h-5 text-orange-700" />
                     </div>
-                    <div>
-                      <strong className="text-lg">Guest Mode Active</strong>
-                      <p className="text-sm mt-1">You're browsing as a guest. Sign in to unlock purchasing and full marketplace features.</p>
+                    <div className="min-w-0">
+                      <strong className="text-base sm:text-lg">Guest Mode Active</strong>
+                      <p className="text-xs sm:text-sm mt-1">You're browsing as a guest. Sign in to unlock purchasing and full marketplace features.</p>
                     </div>
                   </div>
                 </div>
@@ -760,9 +761,9 @@ export default function Marketplace() {
 
       {/* Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-8 right-8 bg-gradient-to-r from-gray-900 to-gray-800 text-white px-8 py-4 rounded-2xl shadow-2xl z-50 animate-slide-up border border-gray-700 flex items-center gap-3">
-          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-          <span className="font-semibold text-lg">{toastMessage}</span>
+        <div className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 bg-gradient-to-r from-gray-900 to-gray-800 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-2xl z-50 animate-slide-up border border-gray-700 flex items-center gap-2 sm:gap-3 max-w-[calc(100vw-2rem)]">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0"></div>
+          <span className="font-semibold text-sm sm:text-base md:text-lg truncate">{toastMessage}</span>
         </div>
       )}
     </Layout>
