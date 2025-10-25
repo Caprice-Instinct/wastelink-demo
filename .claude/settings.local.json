@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\Users\\linet\\Documents\\Linet\\hack\\CHAI\\week1\\wastelink-ai\\frontend\" /s /b)",
+      "Bash(npm run build:*)",
+      "Bash(pnpm build:*)",
+      "Read(//c/Users/linet/Documents/Linet/hack/CHAI/week1/**)",
+      "Bash(npm init:*)",
+      "Bash(xcopy:*)",
+      "Read(//c/**)",
+      "Bash(npm install)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
