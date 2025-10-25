@@ -9,16 +9,16 @@ export default function SearchFilterBar({
   filterOptions = []
 }) {
   return (
-    <div className="flex flex-col md:flex-row gap-4">
-      <div className="flex-1">
-        <div className="flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-lg border">
-          <Search className="w-4 h-4 text-gray-400" />
+    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
+      <div className="flex-1 w-full">
+        <div className="flex items-center space-x-2 bg-gray-50 px-3 sm:px-4 py-2 rounded-lg border">
+          <Search className="w-4 h-4 text-gray-400 flex-shrink-0" />
           <input
             type="text"
             placeholder={searchPlaceholder}
             value={searchValue}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="border-none outline-none text-sm flex-1 bg-transparent"
+            className="border-none outline-none text-xs sm:text-sm flex-1 bg-transparent min-w-0"
           />
         </div>
       </div>
@@ -26,7 +26,7 @@ export default function SearchFilterBar({
         <select
           value={filterValue}
           onChange={(e) => onFilterChange(e.target.value)}
-          className="bg-white px-4 py-2 rounded-lg border text-sm"
+          className="bg-white px-3 sm:px-4 py-2 rounded-lg border text-xs sm:text-sm w-full sm:w-auto"
         >
           {filterOptions.map((option) => (
             <option key={option.value} value={option.value}>

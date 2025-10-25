@@ -405,25 +405,25 @@ export default function Marketplace() {
 
   return (
     <Layout>
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-5 md:space-y-6">
         {/* Guest Mode Banner */}
         {isGuest && (
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-xl shadow-lg">
-            <div className="flex items-center gap-3">
-              <Info className="w-5 h-5 flex-shrink-0" />
-              <p className="text-sm md:text-base font-medium">
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-3 sm:p-4 rounded-lg sm:rounded-xl shadow-lg">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Info className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+              <p className="text-xs sm:text-sm md:text-base font-medium">
                 <strong>Guest Mode:</strong> You can browse all listings, but you'll need to sign in to add items to the marketplace or create your own listings.
               </p>
             </div>
           </div>
         )}
 
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">
               Circular Marketplace
             </h2>
-            <p className="text-gray-600">
+            <p className="text-sm sm:text-base text-gray-600">
               Live waste-to-resource trading across Africa
             </p>
           </div>
@@ -465,7 +465,7 @@ export default function Marketplace() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {filteredListings.map((listing) => (
             <ListingCard key={listing._id} listing={listing} onViewClick={handleViewProduct} />
           ))}

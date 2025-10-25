@@ -120,54 +120,59 @@ export default function Layout({ children, cartCount = 0 }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
-                <Leaf className="w-6 h-6 text-white" />
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Leaf className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">
+              <div className="hidden sm:block">
+                <h1 className="text-lg sm:text-xl font-bold text-gray-900">
                   WasteLink AI
                 </h1>
                 <p className="text-xs text-gray-500">
                   Africa's Circular Economy Platform
                 </p>
               </div>
+              <div className="sm:hidden">
+                <h1 className="text-base font-bold text-gray-900">
+                  WasteLink AI
+                </h1>
+              </div>
             </Link>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <Link href="/cart" className="relative">
-                <ShoppingCart className="w-6 h-6 text-gray-600 hover:text-gray-800 transition-colors" />
+                <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-gray-800 transition-colors" />
                 {cartCount > 0 && (
                   <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
               </Link>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-1.5 sm:space-x-2">
                 {isGuest ? (
                   <>
-                    <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-                      <User className="w-4 h-4 text-gray-400" />
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400" />
                     </div>
-                    <div className="text-sm">
-                      <div className="font-medium text-gray-600">
+                    <div className="text-xs sm:text-sm">
+                      <div className="font-medium text-gray-600 whitespace-nowrap">
                         Guest Mode
                       </div>
-                      <div className="text-xs text-orange-500">
+                      <div className="text-xs text-orange-500 whitespace-nowrap">
                         Browse Only
                       </div>
                     </div>
                   </>
                 ) : (
                   <>
-                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-bold text-green-600">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-xs sm:text-sm font-bold text-green-600">
                         {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
                       </span>
                     </div>
-                    <div className="text-sm">
+                    <div className="hidden sm:block text-sm">
                       <div className="font-medium text-gray-900">
                         {user?.name || 'User'}
                       </div>
@@ -195,8 +200,8 @@ export default function Layout({ children, cartCount = 0 }) {
       </header>
 
       <nav className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex space-x-4 sm:space-x-6 md:space-x-8">
             {navigation.map((item) => {
               const isActive = router.pathname === item.href;
               const isDisabled = isGuest && item.name === 'My Listings';
@@ -205,11 +210,11 @@ export default function Layout({ children, cartCount = 0 }) {
                 return (
                   <div
                     key={item.name}
-                    className="flex items-center space-x-2 py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-300 cursor-not-allowed"
+                    className="flex items-center space-x-1 sm:space-x-2 py-3 sm:py-4 px-0.5 sm:px-1 border-b-2 border-transparent font-medium text-xs sm:text-sm text-gray-300 cursor-not-allowed"
                     title="Sign in to view your listings"
                   >
-                    <item.icon className="w-4 h-4" />
-                    <span>{item.name}</span>
+                    <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span className="whitespace-nowrap">{item.name}</span>
                   </div>
                 );
               }
@@ -218,14 +223,14 @@ export default function Layout({ children, cartCount = 0 }) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+                  className={`flex items-center space-x-1 sm:space-x-2 py-3 sm:py-4 px-0.5 sm:px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors ${
                     isActive
                       ? 'border-green-500 text-green-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
-                  <item.icon className="w-4 h-4" />
-                  <span>{item.name}</span>
+                  <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span className="whitespace-nowrap">{item.name}</span>
                 </Link>
               );
             })}
@@ -233,7 +238,7 @@ export default function Layout({ children, cartCount = 0 }) {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
         {children}
       </main>
 
